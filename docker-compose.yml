@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  redis:
+    container_name: "redis"
+    image: "redis:6.2"
+    networks:
+      - backend
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: "app"
+    image: "async_app:1"
+    command:
+      sh -c "cd src && poetry run uvicorn --host 0.0.0.0 app:app --reload"
+    volumes:
+      - ./src:/service/src
+      - ./tests:/service/tests
+    networks:
+      - backend
+    ports:
+      - '8000:8000'
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+
+networks:
+  backend:
+
+volumes:
+  redis_data:

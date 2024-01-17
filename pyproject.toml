@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "io"
+version = "0.1.0"
+description = ""
+authors = ["emurze <grayemurze@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.4.4"
+fastapi = "^0.109.0"
+uvicorn = "^0.25.0"
+redis = "^5.0.1"
+faker = "^22.2.0"
+aiohttp = "^3.9.1"
+aiofiles = "^23.2.1"
+bs4 = "^0.0.1"
+lxml = "^5.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
